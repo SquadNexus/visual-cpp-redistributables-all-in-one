@@ -1,0 +1,48 @@
+
+2) install-vcredist.ps1
+```powershell
+# Visual C++ Redistributables All-in-One Installer
+# Windows PowerShell script
+# This script installs the most common Visual C++ runtime packages
+# using official Microsoft sources via winget or direct Microsoft download URLs.
+
+$ErrorActionPreference = "Stop"
+
+Write-Host "============================================" -ForegroundColor Cyan
+Write-Host "Visual C++ Redistributables Installer" -ForegroundColor Cyan
+Write-Host "============================================" -ForegroundColor Cyan
+
+# Check if winget exists
+$winget = Get-Command winget -ErrorAction SilentlyContinue
+if (-not $winget) {
+    Write-Host "winget was not found. Please install App Installer / winget first." -ForegroundColor Red
+    Write-Host "Install from Microsoft Store or use the official Microsoft installer page." -ForegroundColor Yellow
+    exit 1
+}
+
+$arch = (Get-CimInstance Win32_OperatingSystem).OSArchitecture
+Write-Host "Detected architecture: $arch" -ForegroundColor Yellow
+
+# Determine package names
+$packages = @(
+    "Microsoft.VCRedist.2015+.x64",
+    "Microsoft.VCRedist.2015+.x86"
+)
+
+# Install latest runtime packages
+foreach ($pkg in $packages) {
+    Write-Host "Installing $pkg ..." -ForegroundColor Green
+    winget install --id $pkg --accept-source-agreements --accept-package-agreements --silent --disable-interactivity
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "Failed to install $pkg" -ForegroundColor Red
+    }
+}
+
+# Optional older runtimes
+Write-Host "============================================" -ForegroundColor Cyan
+Write-Host "Optional older runtimes are available from Microsoft." -ForegroundColor Yellow
+Write-Host "For legacy support, see:" -ForegroundColor Yellow
+Write-Host "https://learn.microsoft.com/cpp/windows/latest-supported-vc-redist" -ForegroundColor Blue
+
+Write-Host "Installation complete." -ForegroundColor Green
+Pause
