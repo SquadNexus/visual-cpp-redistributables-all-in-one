@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VC++ Redistributables</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav container">
+      <div class="logo">VC++ Pack</div>
+      <a href="#download" class="btn">Install Runtimes</a>
+    </nav>
+
+    <div class="container hero-content">
+      <p class="tag">Game Fix & Compatibility</p>
+      <h1>Visual C++ Redistributables</h1>
+      <p>
+        Install the required Microsoft runtime libraries that many PC games need
+        to run properly on Windows.
+      </p>
+      <div class="buttons">
+        <a class="btn primary" href="#download">Download</a>
+        <a class="btn secondary" href="#faq">Learn More</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container">
+      <h2>What this repo covers</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>2015-2022</h3>
+          <p>Latest runtime used by most modern PC games.</p>
+        </div>
+        <div class="card">
+          <h3>2013</h3>
+          <p>Still used by older games and applications.</p>
+        </div>
+        <div class="card">
+          <h3>2012 / 2010 / 2008 / 2005</h3>
+          <p>Needed for legacy PC titles and old software.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section alt">
+      <div class="container">
+        <h2>Install the runtime pack</h2>
+        <div class="download-box">
+          <p>Use the PowerShell installer script in this repository:</p>
+          <code>powershell -ExecutionPolicy Bypass -File .\install-vcredist.ps1</code>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section container">
+      <h2>Common issues fixed</h2>
+      <ul class="faq-list">
+        <li>MSVCP140.dll missing</li>
+        <li>VCRUNTIME140.dll missing</li>
+        <li>MSVCR110.dll missing</li>
+        <li>Runtime library errors</li>
+        <li>Game launch failures on Windows</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 VC++ Redistributables Pack</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
